@@ -16,11 +16,26 @@ class MyApp extends StatefulWidget {
 
 class MyAppState extends State<MyApp> {
   var questions = [
-    'Question 1',
-    'Question 2',
-    'Question 3',
-    'Question 4',
-    'Question 5',
+    {
+      'QuestionText':'Question 1',
+      'Answer' : ['Answer 1','Answer 2','Answer 3', 'Answer 4']
+    },
+    {
+      'QuestionText':'Question 2',
+      'Answer' : ['Answer 1','Answer 2','Answer 3', 'Answer 4']
+    },
+    {
+      'QuestionText':'Question 3',
+      'Answer' : ['Answer 1','Answer 2','Answer 3', 'Answer 4']
+    },
+    {
+      'QuestionText':'Question 4',
+      'Answer' : ['Answer 1','Answer 2','Answer 3', 'Answer 4']
+    },
+    {
+      'QuestionText':'Question 5',
+      'Answer' : ['Answer 1','Answer 2','Answer 3', 'Answer 4']
+    },
   ];
   var i = 0;
   click() {
@@ -39,16 +54,15 @@ class MyAppState extends State<MyApp> {
       ),
       body: Column(
         children: <Widget>[
-          Question(questions[i]),
-          // RaisedButton(
-          //   child: Text('Press Me'),
-          //   onPressed: click,
-          // textColor: Colors.indigoAccent,
-          // ),
-          Answer(click),
-          Answer(click),
-          Answer(click),
-          Answer(click),
+          Question(questions[i]['QuestionText']),
+          ...(questions[i]['Answer'] as List<String>).map(
+            (answer){
+              return Answer(click,answer);
+
+            }
+
+          )
+          
 
         ],
       ),
